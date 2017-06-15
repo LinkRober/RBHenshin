@@ -23,9 +23,9 @@ class Car: NSObject,Henshine {
     var energy:Energy?
     
     required init?(json: RBJSON) {
-        guard let name:String = RBDecoder.decodeStringUppercase(key: "name", json: json),
+        guard let name:String = "name" <<- json,
               let wheel:Int = "wheel" <<- json,
-              let engine:String = RBDecoder.decodeStringUppercase(key: "engine", json: json),
+              let engine:String = "engine" <<- json,
               let user:Person =  "user" <<- json,
               let seats:[Seat] = "seats" <<- json,
               let energy:Energy = "energy" <<- json  else {
@@ -37,6 +37,16 @@ class Car: NSObject,Henshine {
         self.user = user
         self.seats = seats
         self.energy = energy
+    }
+    
+    func toJson() -> RBJSON? {
+        return jsonify([
+            "name" ->> self.name,
+            "wheel" ->> self.wheel,
+            "user" ->> self.user,
+            "seats" ->> self.seats,
+            "energy" ->> self.energy,
+            ])
     }
 }
 

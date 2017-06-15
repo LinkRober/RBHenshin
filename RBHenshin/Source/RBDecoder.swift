@@ -1,9 +1,9 @@
 //
 //  RBDecoder.swift
-//  GlossExample
+//  RBHenshin
 //
-//  Created by 夏敏 on 05/04/2017.
-//  Copyright © 2017 Harlan Kellaway. All rights reserved.
+//  Created by 夏敏 on 10/04/2017.
+//  Copyright © 2017 夏敏. All rights reserved.
 //
 
 import Foundation

@@ -17,7 +17,8 @@ class ViewController: UIViewController {
             "engine":"奔驰发动机",
             "wheel":4,
             "user":[
-                "firstName":"xia"
+                "firstName":"xia",
+                "secondName":"min",
             ],
             "seats":[
                 ["location":"前"],
@@ -37,7 +38,6 @@ class ViewController: UIViewController {
         print(car.engine ?? "")
         print(car.wheel ?? 0)
         print(car.user?.firstName ?? "")
-        
         guard let seats:[Seat] = car.seats, seats.count > 0 else {
             return
         }
@@ -45,6 +45,9 @@ class ViewController: UIViewController {
             print(seat.location ?? "error")
         }
         print(car.energy ?? "error")
+        let carJsonEnable = car.toJson()!
+        print("\(carJsonEnable)")
+        
     }
 
     override func didReceiveMemoryWarning() {

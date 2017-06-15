@@ -8,14 +8,20 @@
 
 import UIKit
 
-class Seat: NSObject,RBDecodable {
+class Seat: NSObject,Henshine {
     
     var location:String?
     
     required init?(json: RBJSON) {
-        guard let location = RBDecoder.decodeStringUppercase(key: "location", json: json)  else {
+        guard let location:String = "location" <<- json  else {
             return nil
         }
         self.location = location
+    }
+    
+    func toJson() -> RBJSON? {
+        return jsonify([
+            "location" ->> self.location
+            ])
     }
 }
