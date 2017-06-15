@@ -9,6 +9,11 @@
 import Foundation
 
 struct RBEncoder {
+    
+    /// convert generic property to json
+    ///
+    /// - Parameter key: key
+    /// - Returns: json
     public static func encode<T>(key:String) -> (T?) -> RBJSON?{
         return {
             property in
@@ -20,6 +25,11 @@ struct RBEncoder {
         }
     }
     
+    
+    /// convert encodeable propery to json
+    ///
+    /// - Parameter key: key
+    /// - Returns: json
     public static func encode<T:RBEncodable>(encodeableForKey key:String) -> (T?) -> RBJSON? {
         return {
             property in
@@ -31,6 +41,11 @@ struct RBEncoder {
         }
     }
     
+    
+    /// convert generice array property to json
+    ///
+    /// - Parameter key: key
+    /// - Returns: json
     public static func encode<T>(arrayForKey key:String) -> ([T]?) -> RBJSON? {
         return {
             array in
@@ -43,6 +58,11 @@ struct RBEncoder {
         }
     }
     
+    
+    /// convert enable array property to json
+    ///
+    /// - Parameter key: key
+    /// - Returns: json
     public static func encode<T:RBEncodable>(arrayForEnableKey key:String) -> ([T]?) -> RBJSON? {
         return {
             array in
@@ -59,6 +79,11 @@ struct RBEncoder {
         }
     }
     
+    
+    /// convert enum property to json
+    ///
+    /// - Parameter key: key
+    /// - Returns: json
     public static func encode<T:RawRepresentable>(enumForKey key:String) -> (T?) -> RBJSON? {
         return {
             property in
