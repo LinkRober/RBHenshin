@@ -41,10 +41,18 @@ private func setValue(inJson json:inout RBJSON,value:Any,forKeyPath keyPath:Stri
     guard let firstKey = keyComponents.first else {
         return
     }
+    
     keyComponents.remove(at: 0)
     if keyComponents.isEmpty {
         json[firstKey] = value
     }else {
-        //
+        let rejoined = keyComponents.joined(separator: delimiter)
+        var subJSON : RBJSON = [:]
+        
+        if let existingSubJSON = json[firstKey] as? RBJSON {
+            subJSON = existingSubJSON
+        }
+        setValue(inJson: &subJSON, value: value, forKeyPath: rejoined)
+        json[firstKey] = subJSON
     }
 }

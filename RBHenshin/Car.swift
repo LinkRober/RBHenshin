@@ -21,6 +21,7 @@ class Car: NSObject,Henshine {
     var user:Person?
     var seats:[Seat]?
     var energy:Energy?
+    var test:String?
     
     required init?(json: RBJSON) {
         guard let name:String = "name" <<- json,
@@ -43,9 +44,10 @@ class Car: NSObject,Henshine {
         return jsonify([
             "name" ->> self.name,
             "wheel" ->> self.wheel,
-            "user" ->> self.user,
-            "seats" ->> self.seats,
+            ("user" ->> self.user)!,
+            ("seats" ->> self.seats)!,
             "energy" ->> self.energy,
+            "engine" ->> self.engine,
             ])
     }
 }
